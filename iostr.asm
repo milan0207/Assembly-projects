@@ -1,11 +1,11 @@
-;Koncsard Milan, kmim2248, 512
-;LAB4, feladat 2
+; Koncsard Milan, kmim2248, 512
+; LAB4, task 2
 
-;ReadStr(EDI vagy ESI, ECX max. hossz):()   – C-s (bináris 0-ban végződő) stringbeolvasó eljárás, <Enter>-ig olvas
-;WriteStr(ESI):()                                – stringkiíró eljárás
-;ReadLnStr(EDI vagy ESI, ECX):()   – mint a ReadStr() csak újsorba is lép
-;WriteLnStr(ESI):()                            – mint a WriteStr() csak újsorba is lép
-;NewLine():()                                     – újsor elejére lépteti a kurzort
+; ReadStr(EDI or ESI, max length ECX):()   – C-style (null-terminated binary) string input procedure, reads until <Enter>
+; WriteStr(ESI):()                                – string output procedure
+; ReadLnStr(EDI or ESI, ECX):()   – similar to ReadStr() but also moves to a new line
+; WriteLnStr(ESI):()                            – similar to WriteStr() but also moves to a new line
+; NewLine():()                                     – moves the cursor to the beginning of a new line
 
 
 %include 'mio.inc'
@@ -38,16 +38,17 @@ mov ebx, 0
 jmp .beolvas
 
 jmp .vege
-.backspace:  ;backspace kezeles
-    cmp ebx,0 ;osszehasonlitom hogy hanyadik helyen vagyok, nem csinalok semmit ha mar startbol a 0dik helyen vagyok
-je .beolvas
-    call mio_writechar  ;kiirom a backspace karaktert, a kurzos visszaugrik eggyet
-    mov al, ' ' ;kiirom egy szokkozt h torolje le a kiirt karatkert
+.backspace:  ; Backspace handling
+    cmp ebx, 0 ; Compare to check if I'm at position 0, do nothing if at the starting position
+    je .beolvas
+    call mio_writechar  ; Write the backspace character, the cursor moves back one position
+    mov al, ' ' ; Write a space to erase the displayed character
     call mio_writechar
     mov al, 8
-     call mio_writechar ;visszaleptetem a kurzort ujbol
+    call mio_writechar ; Move the cursor back again
     dec ebx
 jmp .beolvas
+
 
 .vege:
     mov al,0
@@ -78,7 +79,7 @@ xor ebx,ebx
 
 .kiiras:
 
-mov al,[edx+ebx]  ;a nulladik helyrol sorban megyek elore egesz a binaris 0-ig
+mov al,[edx+ebx]  ; Move forward from the zeroth position in the line until reaching the binary 0
 call mio_writechar
 inc ebx
 cmp al,0

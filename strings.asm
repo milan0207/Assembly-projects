@@ -1,8 +1,8 @@
-;StrLen(ESI):(EAX)              – EAX-ben visszatéríiti az ESI által jelölt string hosszát, kivéve a bináris 0-t
-;StrCat(EDI, ESI):()             – összefűzi az ESI és EDI által jelölt stringeket (azaz az ESI által jelöltet az EDI után másolja)
-;StrUpper(ESI):()                 – nagybetűssé konvertálja az ESI stringet
-;StrLower(ESI):()                 – kisbetűssé konvertálja az ESI stringet
-;StrCompact(ESI, EDI):()      – EDI-be másolja át az ESI stringet, kivéve a szóköz, tabulátor (9), kocsivissza (13) és soremelés (10) karaktereket
+; StrLen(ESI):(EAX)              – Returns the length of the string pointed to by ESI in EAX, excluding the binary 0
+; StrCat(EDI, ESI):()             – Concatenates the strings pointed to by ESI and EDI (copies ESI after EDI)
+; StrUpper(ESI):()                 – Converts the string pointed to by ESI to uppercase
+; StrLower(ESI):()                 – Converts the string pointed to by ESI to lowercase
+; StrCompact(ESI, EDI):()      – Copies the string pointed to by ESI to EDI, excluding space, tab (9), carriage return (13), and line feed (10) characters
 
 ;Koncsard Milan, kmim2248, 512
 ;LAB4, feladat 3
@@ -30,10 +30,10 @@ push ebx
 .szamol:
     mov bl,[esi+eax]
     inc eax
-cmp bl,0   ;elmegyek a string vegeig amilyen ertek lesz az eax-ben aolyan hosszu a string
+cmp bl,0   ; I go through the string until the value in EAX, which represents the length of the string
     jne .szamol
     pop ebx
-    dec eax ;ki kell vonnom eggyet ugyanis jelenleg a 0-at is bele szamolta a hossszaba
+    dec eax ; I need to subtract one because it currently includes the binary 0 in its length
 
 ret
 
@@ -44,7 +44,7 @@ StrCat:
     xchg esi,edi
     xor ebx,ebx
     xor eax,eax
-    call StrLen ;meghivom a strlen fuggvenyt hogy az eax -be keruljon a hosssza igy tudom hogy honnan kezdjem el masolni
+    call StrLen ; I call the strlen function to get its length in EAX, so I know where to start copying
 
 .masol:
     mov cl,[edi+ebx]
@@ -76,7 +76,7 @@ cmp al,0
 
 jmp .vege
 .nagy:
-cmp al,'z' ;ha nagyobb mint a 'z' akkor nem kell nagybetusiteni
+cmp al,'z' ; If greater than 'z', no need to convert to uppercase
     jg .folytat
 sub al, 32
 jmp .folytat
@@ -129,7 +129,7 @@ StrCompact:
     mov edx,0
     mov al, [esi+ebx]
     cmp al,' '
-        je .torol ;hasonlitom a karakterekhez amiket torolni kell, ha uigy van kitiorlom
+        je .torol ; Compare with the characters to be deleted, if they match, erase them
     cmp al,9
         je .torol
     cmp al,13

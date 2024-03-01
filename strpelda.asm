@@ -1,17 +1,15 @@
-
-;megfelelő üzenet kiíratása után beolvasunk egy stringet;
-;kiírjuk a hosszát;
-;kiírjuk a tömörített formáját;
-;kiírjuk a tömörített formáját kisbetűkre alakítva;
-;megfelelő üzenet kiíratása után beolvasunk egy második stringet;
-;kiírjuk a hosszát;
-;kiírjuk a tömörített formáját;
-;kiírjuk a tömörített formáját nagybetűkre alakítva;
-;létrehozunk a memóriában egy új stringet: az első string nagybetűs verziójához hozzáfűzzük a második string kisbetűs verzióját;
-;kiírjuk a létrehozott stringet;
-;kiírjuk a létrehozott string hosszát;
-;befejezzük a programot.
-
+; After printing the appropriate message, we read a string;
+; Print its length;
+; Print its compact form;
+; Print its compact form converted to lowercase;
+; After printing the appropriate message, we read a second string;
+; Print its length;
+; Print its compact form;
+; Print its compact form converted to uppercase;
+; Create a new string in memory: concatenate the uppercase version of the first string with the lowercase version of the second string;
+; Print the created string;
+; Print the length of the created string;
+; Finish the program.
 
 ;Koncsard Milan, kmim2248, 512
 ;LAB4, feladat 4
@@ -169,9 +167,9 @@ strb_2 resb 256
 strc resb 256
 
 section .data
-elso db "Olvasd be a az elso stringet: " ,0
-masodik db "Olvasd be a masodik stringet: " ,0
-karakter db "ennyi karakterbol all: " ,0
-tomoritett db "tomoritett formaja: " ,0
-kisbetu db "kisbetűkre alakítva: " ,0
-nagybetu db "nagybetukre alakitva: " ,0
+elso db "Read the first string: ", 0
+masodik db "Read the second string: ", 0
+karakter db "It consists of this many characters: ", 0
+tomoritett db "Compact form: ", 0
+kisbetu db "Converted to lowercase: ", 0
+nagybetu db "Converted to uppercase: ", 0

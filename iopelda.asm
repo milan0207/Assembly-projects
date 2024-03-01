@@ -1,11 +1,12 @@
-;beolvas egy előjeles 32 bites egész számot 10-es számrendszerben;
-;kiírja a beolvasott értéket 10-es számrendszerben előjeles egészként, komplementer kódbeli ábrázolását 16-os és kettes számrendszerben;
-;beolvas egy 32 bites hexa számot;
-;kiírja a beolvasott értéket 10-es számrendszerben előjeles egészként, komplementer kódbeli ábrázolását 16-os és kettes számrendszerben;
-;beolvas egy 32 bites bináris számot;
-;kiírja a beolvasott értéket 10-es számrendszerben előjeles egészként, komplementer kódbeli ábrázolását 16-os és kettes számrendszerben;
-;kiírja a három beolvasott érték összegét 10-es számrendszerben előjeles egészként, komplementer kódbeli ábrázolását 16-os és kettes számrendszerben;
-;ez előző lépéseket elvégzi 64 bites értékekre is.
+; Reads a signed 32-bit integer in base-10;
+; Writes the read value in base-10 as a signed integer, its representation in two's complement in base-16 and binary;
+; Reads a 32-bit hexadecimal number;
+; Writes the read value in base-10 as a signed integer, its representation in two's complement in base-16 and binary;
+; Reads a 32-bit binary number;
+; Writes the read value in base-10 as a signed integer, its representation in two's complement in base-16 and binary;
+; Writes the sum of the three read values in base-10 as a signed integer, its representation in two's complement in base-16 and binary;
+; Performs the above steps for 64-bit values as well.
+
 
     ;Koncsard Milan, kmim2248, 512
     ;LAB4, feladat 4
@@ -124,7 +125,7 @@ call NewLine
 call WriteBin
 call NewLine
 
-;64 bites main program
+;The same for 64 bit numbers
 
 
 mov esi,decimalis64
@@ -256,11 +257,11 @@ c2 dd 0
 d2 dd 0
 
 section .text
-decimalis32 db "Olvass be egy 32 bites 10-es szamrendszerbeli szamot: ", 0
-hex32 db "Olvass be egy 32 bites Hexa szamot: ",0
-bin32 db "olvass be egy  32 bites Binaris szamot: ",0
-osszeg db "az osszegek a kovetkezok: " ,0
-hiba db " Hiba ", 0
-decimalis64 db "Olvass be egy 64 bites 10-es szamrendszerbeli szamot: ", 0
-hex64 db "Olvass be egy 64 bites Hexa szamot: ",0
-bin64 db "olvass be egy  64 bites Binaris szamot: ",0
+decimalis32 db "Read a 32-bit decimal number: ", 0
+hex32 db "Read a 32-bit hexadecimal number: ", 0
+bin32 db "Read a 32-bit binary number: ", 0
+osszeg db "The sums are as follows: ", 0
+hiba db " Error ", 0
+decimalis64 db "Read a 64-bit decimal number: ", 0
+hex64 db "Read a 64-bit hexadecimal number: ", 0
+bin64 db "Read a 64-bit binary number: ", 0
