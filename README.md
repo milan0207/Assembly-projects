@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-During the inaugural semester of my Software Engineering studies, I undertook the challenge of crafting this project in the stimulating environment of the Computer Architecture class.
+During the inaugural semester (2022) of my Software Engineering studies, I undertook the challenge of crafting this project in the stimulating environment of the Computer Architecture class.
 ## ionum.asm
 
 ### ReadInt():(EAX)
